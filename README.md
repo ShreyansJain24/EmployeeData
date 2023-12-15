@@ -30,6 +30,9 @@ Screen shots for verification of the APIs.
 ### Screenshot for API 3
 ![Screenshot (387)](https://github.com/ShreyansJain24/EmployeeData/assets/74522896/307cc9cb-b086-4ac9-b16b-0babfaaac598)
 
+### Screenshot for API 3
+![Screenshot](https://github.com/ShreyansJain24/EmployeeData/assets/74522896/ed821ca2-6b6c-4f8a-afaa-5cae6951c7ff)
+
 ### Screenshot for API 4
 ![Screenshot (388)](https://github.com/ShreyansJain24/EmployeeData/assets/74522896/5ab537b2-e4e6-43b4-868e-0048309bb1f9)
 
