@@ -19,7 +19,7 @@ apart from that the senders mail along with password can also be changes from he
 Screen shots for verification of the APIs.
 
 ### Screenshot for API 1
-![Description of Screenshot 1](/path/to/screenshot1.png)
+![Screenshot (384)](https://github.com/ShreyansJain24/EmployeeData/assets/74522896/f7fa5c4e-7198-497b-bff3-d1599d7f2686)
 
 ### Screenshot for API 1
 ![Description of Screenshot 2](/path/to/screenshot2.png)
