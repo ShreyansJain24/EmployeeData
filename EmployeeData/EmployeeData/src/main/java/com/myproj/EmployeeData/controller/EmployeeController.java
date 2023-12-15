@@ -1,9 +1,8 @@
 package com.myproj.EmployeeData.controller;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+import com.myproj.EmployeeData.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -24,16 +23,14 @@ import com.myproj.EmployeeData.service.impl.EmployeeServiceImpl;
 @RequestMapping("/emp")
 public class EmployeeController {
 	@Autowired
-	private EmployeeServiceImpl empoyeeServiceimpl;
+	private EmployeeService empoyeeService;
 
 	
 	@PostMapping("/create")
-	public ResponseEntity<EmployeeDetails> addBook(@RequestBody EmployeeDetails emp) {
-		EmployeeDetails b=null;
+	public ResponseEntity<String> addBook(@RequestBody EmployeeDetails emp) {
 		try {
-			b=this.empoyeeServiceimpl.createEmployee(emp);
-			System.out.println(emp);
-			return ResponseEntity.of(Optional.of(b));
+			empoyeeService.createEmployee(emp);
+			return ResponseEntity.ok("Employee Created Succesfuly");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -44,9 +41,24 @@ public class EmployeeController {
 	 @GetMapping("/joined-between")
 	    public List<EmployeeDetails> getEmployeesJoinedBetween( @RequestParam("startDate")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date startDate,
 	            @RequestParam("endDate")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date endDate) 
-	      {
-		 System.out.println("date");
-	        return empoyeeServiceimpl.findByjoiningDateBetween(startDate, endDate);
+	    {
+			List<EmployeeDetails> empList=null;
+			try{
+                 empList=empoyeeService.findByjoiningDateBetween(startDate, endDate);
+				 if(Objects.nonNull(empList)){
+					 return empList;
+				 }
+				 else{
+					 System.out.println("no data found for employee");
+					 return empList;
+				 }
+			}
+			catch(Exception e){
+				System.out.println("error occured while fetching data");
+				e.printStackTrace();
+			}
+
+	        return empList;
 	    }
 
 }

@@ -30,6 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeRepository.findEmployeeByMail(mail);
 	}
 
+	@Override
 	public List<EmployeeDetails> findByjoiningDateBetween(Date startDate, Date endDate) {
         return employeeRepository.findByjoiningDateBetween(startDate, endDate);
     }

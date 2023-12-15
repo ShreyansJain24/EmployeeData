@@ -4,6 +4,7 @@ import com.myproj.EmployeeData.entities.OtpDetails;
 import com.myproj.EmployeeData.repositories.OtpRepository;
 import com.myproj.EmployeeData.service.OtpService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,6 @@ public class OtpServiceImpl implements OtpService {
         myOtp.setExpiryTime(calculateExpiryTime());
 
         otpRepository.save(myOtp);
-
 
         //save otp in database for verification
         return sendOTPEmail(mail, generatedOTP);
@@ -70,7 +70,7 @@ public class OtpServiceImpl implements OtpService {
         // Create and send an email with the OTP
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("4999shreyansjain@gmail.com");
-        message.setTo("jainshreyans251@gmail.com");
+        message.setTo(userEmail);
         message.setSubject("Login OTP");
         message.setText("Your OTP for Login is: " + otp);
         try{
